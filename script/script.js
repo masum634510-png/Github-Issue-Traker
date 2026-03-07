@@ -62,3 +62,24 @@ const displayData = (cards) => {
 
 }
 loadData();
+
+/* login btn */
+ const userInput = document.getElementById("userNameBtn");
+ const passwordInput = document.getElementById("passwordBtn");
+ const singinButton = document.getElementById("singInBtn");
+ 
+singinButton.addEventListener("click", () => {
+   //alert("ami thik asi");
+   const userValue = userInput.value;
+   const passValue = passwordInput.value;
+   if(userValue == "admin" && passValue == "admin123"){
+    alert("login sucessfully");
+    window.location.href = "home.html";
+   }
+   else{
+    alert("invalid Number")
+    return;
+   }
+
+ })
+ 

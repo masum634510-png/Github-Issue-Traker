@@ -20,76 +20,63 @@
     <link rel="stylesheet" href="./style/style.css">
 </head>
 
-<body>
-    <!-- navbar -->
-    <div class="navbar bg-base-100 shadow-sm flex justify-between px-6">
-        <div class="flex justify-center items-center gap-2">
-            <img class="w-[36px] h-[37px]" src="./assets/github-logo.png" alt="">
-            <a class="text-2xl font-semibold">GitHub Issues Tracker</a>
+<body> 
+    <!-- github login page -->
+    <section class="w-[90%] max-w-[450px] h-[720px] mx-auto bg-white  rounded-md shadow-[0_0_15px_rgba(0,0,0,0.1)] m-6">
+        <div class=" flex flex-col items-center justify-center mx-auto pt-15 pb-5">
+            <img class="" src="./assets/github-logo.png" alt="">
+            <h2 class="text-2xl font-semibold pt-4 ">GitHub Issues Tracker</h2>
+            <p class="text-gray-400">Sign in to manage your issues</p>
         </div>
-        <div class="flex gap-2">
-            <label class="input input-bordered flex items-center gap-2">
-                <i class="fa-brands fa-sistrix opacity-70"></i>
-                <input type="text" class="grow" placeholder="Search issues..." />
-            </label>
-            <button id="searchBtn" class="btn btn-primary">Search</button>
-        </div>
-    </div>
 
-    <!-- banner section -->
-    <section>
-        <div class="w-11/12 mx-auto bg-white shadow-[0_0_15px_rgba(0,0,0,0.1)] rounded-md p-6 mt-20">
-            <div class="flex gap-2">
-                <input id="allBtn" type="button" value="All" class="btn bg-blue-700 text-white" />
-                <input id="openBtn" type="button" value="Open" class="btn" />
-                <input id="buttonBtn" type="button" value="Closed" class="btn" />
+        <label class="">
+            <div class="p-6">
+                <p class="font-semibold">User Name</p>
+                <input id="userNameBtn" class="py-1 px-2 rounded-sm border border-gray-400 w-[100%] my-1" type="text" name="" id=""
+                    placeholder="Enter Username">
+                <p class="text-indigo-600 text-[16px]">Default:admin</p>
+
+                <p class="font-semibold mt-3">Password</p>
+                <input id="passwordBtn" class="py-1 px-2 rounded-sm border border-gray-400 w-[100%] my-1" type="text" name="" id=""
+                    placeholder="Enter your Password">
+                <p class="text-indigo-600 text-[16px]">Default:admin123</p>
+
+                <button id="singInBtn" class="bg-blue-600 py-1  rounded-md w-[100%] text-white mt-4">Sing In</button>
             </div>
-        </div>
-    </section>
 
-    <section class="w-11/12 mx-auto shadow-[0_0_15px_rgba(0,0,0,0.1)] p-2 rounded-md mt-10 ">
-        <div class="flex justify-between items-center p-6">
-            <div class="flex justify-center items-center gap-2">
-                <img class="w-[32px] h-[32px]" src="./assets/Aperture.png" alt="">
-                <div class="">
-                    <h2 class="text-[24px] font-semibold">50 Issues</h2>
-                    <p class="text-gray-500">Track and manage your project issues</p>
-                </div>
-
-            </div>
-            <div class="flex gap-8">
-                <div class="flex items-center gap-2">
-                    <span class="w-2.5 h-2.5 bg-green-600 rounded-full"></span>
-                    <p class="font-semibold">Open</p>
-                </div>
-                <div class="flex items-center gap-2">
-                    <span class="w-2.5 h-2.5 bg-purple-600 rounded-full"></span>
-                    <p class="font-semibold">Closed</p>
+            <div class="flex flex-col items-center justify-center">
+                <p>OR</p>
+                <p class="text-gray-400 text-[16px] pt-4">Demo Credentials</p>
+                <div class="mt-8 items-center justify-center flex flex-col">
+                    <h2 class="font-[56px]"><span class="font-semibold text-[18px]">Username:</span>admin</h2>
+                    <h2 class="font-[16px]"><span class="font-semibold text-[18px]">Password:</span>admin123</h2>
                 </div>
             </div>
-        </div>
+
+        </label>
     </section>
 
-    <!-- main container -->
-    <section>
-        <div id="mainContainer"
-            class=" w-11/12 mx-auto grid grid-cols-1 md:grid-cols-4  mt-3 rounded-md gap-y-6">
-             <!-- card 01 -->
-           
-            
-            
-            
-
-
-
-
+    <!-- modal -->
+    <!-- Open the modal using ID.showModal() method -->
+    <button class="btn" onclick="my_modal_5.showModal()">open modal</button>
+    <dialog id="my_modal_5" class="modal modal-bottom sm:modal-middle">
+        <div class="modal-box">
+            <h3 class="text-lg font-bold">Masum tamake partei hobe!</h3>
+            <p class="py-4">valo are lage na</p>
+            <div class="modal-action">
+                <form method="dialog">
+                    <!-- if there is a button in form, it will close the modal -->
+                    <button class="btn">Close</button>
+                </form>
+            </div>
         </div>
-    </section>
+    </dialog>
 
 
 
 
 
+    <script src="./script/script.js"></script>
     <script src="./script/script.js"></script>
 </body>
 
