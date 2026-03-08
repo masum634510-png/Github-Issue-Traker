@@ -1,10 +1,21 @@
-
+/* loadingSping */
+const loadingSping = document.getElementById("loading-container");
+const showLoading = () => {
+    loadingSping.classList.remove("hidden");
+    loadingSping.innerHTML = "";
+}
+const hiddenLoading = () => {
+    loadingSping.classList.add("hidden")
+}
+/* api data fetch */
 const loadData = () => {
+    showLoading();
     const url = "https://phi-lab-server.vercel.app/api/v1/lab/issues";
     fetch(url)
         .then((res) => res.json())
         .then((data) => {
-            console.log(data)
+            //console.log(data)
+            hiddenLoading();
             displayData(data.data);
 
         })
@@ -63,23 +74,22 @@ const displayData = (cards) => {
 }
 loadData();
 
-/* login btn */
+/* login page */
  const userInput = document.getElementById("userNameBtn");
  const passwordInput = document.getElementById("passwordBtn");
- const singinButton = document.getElementById("singInBtn");
+ const singInButton = document.getElementById("singInBtn");
  
-singinButton.addEventListener("click", () => {
-   //alert("ami thik asi");
+singInButton.addEventListener("click", () => {
    const userValue = userInput.value;
    const passValue = passwordInput.value;
    if(userValue == "admin" && passValue == "admin123"){
-    alert("login sucessfully");
+    alert("Login Successfully");
     window.location.href = "home.html";
    }
    else{
-    alert("invalid Number")
+    alert("Login Failed")
     return;
-   }
+   };
 
- })
+ });
  
