@@ -45,9 +45,9 @@ const displayData = (cards) => {
                 <p class="text-gray-500 flex-grow line-clamp-2 h-[40px]">${card.description}</p>
                
                 <div class="flex justify-between items-center">
-                    <div class="flex justify-center items-center border border-red-300 gap-1 bg-red-100 py-1 px-2 rounded-lg ">
+                    <div class="flex justify-center items-center border border-green-300   gap-1 bg-green-100 py-1 px-2 rounded-lg ">
                         <img class="h-[16px] w-[16px] object-cover" src="./assets/Vector.png" alt="">
-                        <button class=" text-red-400 ">BUG</button>
+                        <button class=" text-green-400 ">BUG</button>
                     </div>
                     <div class="flex justify-center items-center gap-1 bg-yellow-100 opacity-90 py-1 px-2 rounded-lg border border-yellow-300 ">
                         <img class="h-[16px] w-[16px] object-cover" src="./assets/Lifebuoy.png" alt="">
@@ -112,8 +112,8 @@ const setColor = (clickedbtn) => {
     .then((res) => res.json())
     .then((data) => {
         const allwords = data.data
-        console.log(allwords);
+        //console.log(allwords);
         
-         displayData(allwords)
+         displayData(allwords) //function call
     })
  }) 
