@@ -30,9 +30,9 @@
         <div class="flex gap-2">
             <label class="input input-bordered flex items-center gap-2">
                 <i class="fa-brands fa-sistrix opacity-70"></i>
-                <input type="text" class="grow" placeholder="Search issues..." />
+                <input id="inputSearch" type="text" class="grow" placeholder="Search issues..." />
             </label>
-            <button id="searchBtn" class="btn btn-primary">Search</button>
+            <button id="btnSearch" class="btn btn-primary">Search</button>
         </div>
     </div>
 
@@ -40,9 +40,9 @@
     <section>
         <div class="w-11/12 mx-auto bg-white shadow-[0_0_15px_rgba(0,0,0,0.1)] rounded-md p-6 mt-20">
             <div class="flex gap-2">
-                <input id="allBtn" type="button" value="All" class="btn bg-blue-700 text-white" />
-                <input id="openBtn" type="button" value="Open" class="btn" />
-                <input id="buttonBtn" type="button" value="Closed" class="btn" />
+                <input id="allBtn" type="button" value="All" class="btn hover:bg-blue-700" />
+                <input id="openBtn" type="button" value="Open" class="btn hover:bg-blue-700" />
+                <input id="closeBtn" type="button" value="Closed" class="btn hover:bg-blue-700" />
             </div>
         </div>
     </section>
@@ -52,7 +52,7 @@
             <div class="flex justify-center items-center gap-2">
                 <img class="w-[32px] h-[32px]" src="./assets/Aperture.png" alt="">
                 <div class="">
-                    <h2 class="text-[24px] font-semibold">50 Issues</h2>
+                    <h2 id="totalIssueCount" class="text-[24px] font-semibold">0 Issues</h2>
                     <p class="text-gray-500">Track and manage your project issues</p>
                 </div>
 

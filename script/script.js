@@ -1,12 +1,16 @@
-/* loadingSping */
+let allIssues = []
+const allbutton = document.getElementById("allBtn")
+const openbutton = document.getElementById("openBtn")
+const closebutton = document.getElementById("closeBtn")
+const totalIssue = document.getElementById("totalIssueCount");
 const loadingSping = document.getElementById("loading-container");
-const showLoading = () => {
+ const showLoading = () => {
     loadingSping.classList.remove("hidden");
     loadingSping.innerHTML = "";
 }
 const hiddenLoading = () => {
     loadingSping.classList.add("hidden")
-}
+}  
 /* api data fetch */
 const loadData = () => {
     showLoading();
@@ -16,24 +20,14 @@ const loadData = () => {
         .then((data) => {
             //console.log(data)
             hiddenLoading();
-            displayData(data.data);
+            allIssues = data.data
+            displayData(allIssues);
 
         })
 }
-/* "id": 1,
-"title": "Fix navigation menu on mobile devices",
-"description": "The navigation menu doesn't collapse properly on mobile devices. Need to fix the responsive behavior.",
-"status": "open",
-"labels": [
-"bug",
-"help wanted"
-],
-"priority": "high",
-"author": "john_doe",
-"assignee": "jane_smith",
-"createdAt": "2024-01-15T10:30:00Z",
-"updatedAt": "2024-01-15T10:30:00Z" */
+
 const displayData = (cards) => {
+    totalIssue.innerText = `${cards.length} Issue`; // issue count
     const mainContainer = document.getElementById("mainContainer")
     mainContainer.innerHTML = "";
 
@@ -41,7 +35,7 @@ const displayData = (cards) => {
         //console.log(card)
         const cardSection = document.createElement("div");
         cardSection.innerHTML = `
-            <div class="${card.status == "open" ? "border-t-3 border-green-600" : " border-t-3 border-orange-400" } bg-white mt-auto flex flex-col h-full shadow-[0_0_15px_rgba(0,0,0,0.1)] m-3 p-4 rounded-md space-y-4">
+            <div class="${card.status == "open" ? "border-t-3 border-green-600" : " border-t-3 border-purple-600" } bg-white mt-auto flex flex-col h-full shadow-[0_0_15px_rgba(0,0,0,0.1)] m-3 p-4 rounded-md space-y-4">
                 <div class="flex justify-between items-center">
                     <img class="w-[30px] h-[30px]" src="./assets/Open-Status.png" alt="">
                     <button class="px-6 py-1 bg-red-100 rounded-lg text-red-400">${card.priority}</button>
@@ -55,7 +49,7 @@ const displayData = (cards) => {
                         <img class="h-[16px] w-[16px] object-cover" src="./assets/Vector.png" alt="">
                         <button class=" text-red-400 ">BUG</button>
                     </div>
-                    <div class="flex justify-center items-center gap-1 bg-[#D97706]/30 py-1 px-2 rounded-lg border border-orange-400 ">
+                    <div class="flex justify-center items-center gap-1 bg-yellow-100 opacity-90 py-1 px-2 rounded-lg border border-yellow-300 ">
                         <img class="h-[16px] w-[16px] object-cover" src="./assets/Lifebuoy.png" alt="">
                         <button class=" text-[#D97706] ">HELP WANTED</button>
                     </div>
@@ -74,22 +68,52 @@ const displayData = (cards) => {
 }
 loadData();
 
-/* login page */
- const userInput = document.getElementById("userNameBtn");
- const passwordInput = document.getElementById("passwordBtn");
- const singInButton = document.getElementById("singInBtn");
- 
-singInButton.addEventListener("click", () => {
-   const userValue = userInput.value;
-   const passValue = passwordInput.value;
-   if(userValue == "admin" && passValue == "admin123"){
-    alert("Login Successfully");
-    window.location.href = "home.html";
-   }
-   else{
-    alert("Login Failed")
-    return;
-   };
 
- });
- 
+ // 3 button add the event listeiner
+allbutton.addEventListener('click', () => {
+    setColor(allbutton)
+    displayData(allIssues)
+})
+openbutton.addEventListener('click', () => {
+   setColor(openbutton)
+   const openIssues = allIssues.filter(issue => issue.status === "open")
+  
+   displayData(openIssues)
+})
+closebutton.addEventListener('click', () => {
+    setColor(closebutton)
+   const closeIssue = allIssues.filter(issue => issue.status === "closed")
+   displayData(closeIssue)
+}) 
+// all button click or color add
+window.onload = () => {
+    allbutton.style.backgroundColor = "blue";
+    allbutton.style.color = "white";
+};
+const buttons = [allbutton, openbutton, closebutton];
+
+const setColor = (clickedbtn) => {
+      buttons.forEach(btn => {
+        btn.style.backgroundColor = "";
+        btn.style.color = ""
+
+      })
+
+      clickedbtn.style.backgroundColor = "blue";
+      clickedbtn.style.color = "white"
+}
+//input search
+ const searchBtn = document.getElementById("btnSearch").addEventListener('click', () => {
+    const searchInput = document.getElementById("inputSearch");
+    const searchValue = searchInput.value.trim().toLowerCase();
+    console.log(searchValue);
+
+    fetch(`https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q=${searchValue}`)
+    .then((res) => res.json())
+    .then((data) => {
+        const allwords = data.data
+        console.log(allwords);
+        
+         displayData(allwords)
+    })
+ }) 
