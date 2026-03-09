@@ -44,15 +44,16 @@ const displayData = (cards) => {
                 <h2 class="text-[16px] h-[40px] font-semibold">${card.title}</h2>
                 <p class="text-gray-500 flex-grow line-clamp-2 h-[40px]">${card.description}</p>
                
-                <div class="flex justify-between items-center">
-                    <div class="flex justify-center items-center border border-green-300   gap-1 bg-green-100 py-1 px-2 rounded-lg ">
-                        <img class="h-[16px] w-[16px] object-cover" src="./assets/Vector.png" alt="">
-                        <button class=" text-green-400 ">BUG</button>
-                    </div>
-                    <div class="flex justify-center items-center gap-1 bg-yellow-100 opacity-90 py-1 px-2 rounded-lg border border-yellow-300 ">
-                        <img class="h-[16px] w-[16px] object-cover" src="./assets/Lifebuoy.png" alt="">
-                        <button class=" text-[#D97706] ">HELP WANTED</button>
-                    </div>
+                <div class="flex gap-4 items-center">
+                    
+                    ${card.labels.map((label,index) => {
+                        const iconName = index === 0 ? "2.png" : "1.png"
+                        return `<div class="flex whitespace-nowrap  items-center overflow-hidden gap-1 ${index % 2 == 0 ? "bg-green-100 border-green-300 text-green-400" : "bg-red-100 border-red-300 text-red-400"} opacity-90 py-1 px-1 rounded-lg border">
+                        <img class="h-[13px] w-[13px] object-cover" src="./assets/${iconName}" alt="">
+                        <button class=" ">${label}</button>
+                    </div>`
+
+                    }).join("")}
                 </div>
                 <hr class=" border border-gray-300 mt-7 mb-5 -mx-4">
 
